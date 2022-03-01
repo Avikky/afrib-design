@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -32,9 +34,32 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function updateProfile(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'profile_pic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('profile_pic')) {
+            $file = $request->file('profile_pic');
+            $image = Storage::disk('public')->putFile('profile', $file);
+        } 
+        else{
+            $image = NULL;
+        }
+
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->image = $image;
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
+
     }
 
     /**

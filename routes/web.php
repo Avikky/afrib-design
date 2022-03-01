@@ -37,7 +37,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth', 'isuser']], functi
     Route::get('/stories', [StoryController::class, 'index'])->name('stories');
     Route::get('/categories', [StoryController::class, 'category'])->name('categories');
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
-    Route::get('/setting', [DashboardController::class, 'settings'])->name('setting');
+    
 
 
     Route::post('/create', [StoryController::class, 'create'])->name('create.story');
@@ -45,7 +45,8 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth', 'isuser']], functi
     Route::post('/edit/{id}', [StoryController::class, 'edit'])->name('edit.story');
     Route::get('/show/{slug}', [StoryController::class, 'show'])->name('show.story');
     Route::delete('/delete/{id}', [StoryController::class, 'destroy'])->name('delete.story');
-    //Route::get('/profile', [UserHomeController::class, 'profile'])->name('user.profile');
+
+    Route::post('/profile/{id}', [DashboardController::class, 'updateProfile'])->name('update.profile');
    
 });
 
@@ -54,13 +55,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isadmin']], functio
     Route::get('/home', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/category', [AdminController::class, 'category'])->name('admin.category');
     Route::get('/location', [AdminController::class, 'location'])->name('admin.location');
-    Route::get('/stories', [AdminController::class, 'category'])->name('admin.stories');
+    Route::get('/stories', [StoryController::class, 'index'])->name('admin.stories');
+
+    Route::post('/approve/{id}', [StoryController::class, 'approveStory'])->name('approve.story');
+    Route::post('/reject/{id}', [StoryController::class, 'rejectStory'])->name('reject.story');
+
+    Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
 
     Route::post('/create-category', [AdminController::class, 'createCategory'])->name('create.category');
     Route::delete('/delete-category/{id}', [AdminController::class, 'deleteCategory'])->name('delete.category');
     Route::delete('/delete-location/{id}', [AdminController::class, 'deleteLocation'])->name('delete.location');
 
     Route::post('/create-location', [AdminController::class, 'createLocation'])->name('create.location');
+
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+    Route::post('/profile/{id}', [DashboardController::class, 'updateProfile'])->name('update.profile');
+    Route::post('/password-change', [AdminController::class, 'changePassword'])->name('update.password');
 
 });
 

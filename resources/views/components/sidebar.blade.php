@@ -11,7 +11,15 @@
 	<div class="sidebar">
 	  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 		<div class="image">
-		  <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+			@if(Auth::user()->image != null)
+				<div class="d-flex justify-content-center">
+					<img width="160px" height="160px" class="img-circle" src="{{'/storage/'.Auth::user()->image}}" alt="Card image cap">
+				</div>
+			@else
+				<div class="d-flex justify-content-center">
+					<img class="img-circle" width="160px" height="160px" src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg" alt="User Avatar">
+				</div>
+			@endif
 		</div>
 		<div class="info">
 		  <span class="p-1 text-white">
@@ -95,13 +103,14 @@
 			  <p>Profile</p>
 			</a>
 		  </li>
-
-		  <li class="nav-item">
-			<a href="{{ route('setting') }}" class="nav-link">
-			  <i class="nav-icon fa fa-cogs text-pink"></i>
-			  <p>Setting</p>
-			</a>
-		  </li>
+		  @if(Auth::user()->role == 1)
+			<li class="nav-item">
+				<a href="{{ route('settings') }}" class="nav-link">
+				<i class="nav-icon fa fa-cogs text-pink"></i>
+				<p>Setting</p>
+				</a>
+			</li>
+			@endif
 		  
 		  <li class="nav-item">
 			<a class="nav-link" href="{{ route('logout') }}"

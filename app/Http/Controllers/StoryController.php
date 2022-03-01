@@ -26,12 +26,24 @@ class StoryController extends Controller
 
     public function index()
     {
-        $stories =  DB::table('stories')->join('story_categories', 'stories.category_id', '=', 'story_categories.id')
-        ->join('locations', 'stories.location_id', '=', 'locations.id')
-        ->select('stories.*', 'story_categories.name as cat_name', 'locations.country as loca_country', 'locations.city as loca_city', 'locations.state as loca_state')->get();
+        if(Auth::user()->role == 1){
 
-        $locations = Location::latest()->get();
-        $categories = StoryCategory::latest()->get();
+            $stories =  DB::table('stories')->join('story_categories', 'stories.category_id', '=', 'story_categories.id')
+            ->join('locations', 'stories.location_id', '=', 'locations.id')
+            ->select('stories.*', 'story_categories.name as cat_name', 'locations.country as loca_country', 'locations.city as loca_city', 'locations.state as loca_state')->get();
+    
+            $locations = Location::latest()->get();
+            $categories = StoryCategory::latest()->get();
+
+        }else{
+            $stories =  DB::table('stories')->where('user_id', Auth::id())->join('story_categories', 'stories.category_id', '=', 'story_categories.id')
+            ->join('locations', 'stories.location_id', '=', 'locations.id')
+            ->select('stories.*', 'story_categories.name as cat_name', 'locations.country as loca_country', 'locations.city as loca_city', 'locations.state as loca_state')->get();
+    
+            $locations = Location::latest()->get();
+            $categories = StoryCategory::latest()->get();
+        }
+
 
         // return $stories;
 
@@ -56,7 +68,7 @@ class StoryController extends Controller
         $story->title = $request->title;
         $story->category_id = $request->category;
         $story->location_id = $request->location;
-        // $story->status = $request->status;
+        $story->user_id = Auth::id();
         // $story->is_draft = $request->draft;
         $story->story = $request->story;
         $story->slug = Str::slug($request->title, '-');
@@ -64,7 +76,7 @@ class StoryController extends Controller
 
         if ($request->file('featured_image')) {
             $file = $request->file('featured_image');
-            $image = Storage::disk('public')->putFile('property', $file);
+            $image = Storage::disk('public')->putFile('story_images', $file);
         } 
         else{
             $image = NULL;
@@ -132,5 +144,27 @@ class StoryController extends Controller
     {
         Story::destroy($id);
         return redirect()->back()->with('success', 'Story deleted!');
+    }
+
+    public function approveStory(Request $request, $id)
+    {
+       if($request->has('approve')){
+           $story = Story::find($id);
+           $story->status = 1;
+           $story->save();
+        }
+
+       return redirect()->back()->with('success', 'Story approved !');
+    }
+
+    public function rejectStory(Request $request, $id)
+    {
+        if($request->has('reject')){
+            $story = Story::find($id);
+            $story->status = 2;
+            $story->save();
+        }
+
+        return redirect()->back()->with('success', 'Story rejected!');
     }
 }

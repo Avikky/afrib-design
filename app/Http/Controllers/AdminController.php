@@ -7,6 +7,8 @@ use App\Models\StoryCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Story;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -65,20 +67,33 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Location successfully created!');
     }
 
-    public function create()
+    public function settings()
     {
-        //
+        return view('admin.settings');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function changePassword(Request $request)
     {
-        //
+        $this->validate($request, [
+            'oldpwd' => 'required|string',
+            'newpwd' => 'required|string',
+            'cpwd' => 'required|string',
+        ]);
+
+        $checkOldPassword = Hash::check($request->oldpwd, Auth::user()->password);
+
+        if($checkOldPassword){
+            if($request->newpwd === $request->cpwd){
+                $user = Auth::user();
+                $user->password = $request->newpwd;
+                $user->save();
+                return redirect()->back()->with('success', 'Your password has been change successfully!');
+            }else{
+                return redirect()->back()->with('error', 'Password does not match');
+            }
+        }else{
+            return redirect()->back()->with('error', 'Incorrect Password check if your old password is typed correctly');
+        }
     }
 
     /**

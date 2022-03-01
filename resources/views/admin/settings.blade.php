@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pageTitle', 'Profile')
+@section('pageTitle', 'Settings')
 @section('content')
 <div class="content">
   <div class="container">
@@ -10,6 +10,13 @@
           <strong>{{ $message }}</strong>
         </div>
       @endif
+
+      @if ($message = Session::get('error'))
+      <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button> 
+        <strong>{{ $message }}</strong>
+      </div>
+    @endif
 
       @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -40,25 +47,19 @@
                 <br><br>
 
                 <div class="card-body">
-                    <form action="{{route('update.profile', ['id' => Auth::id()])}}" enctype="multipart/form-data" method="POST">
+                    <form action="{{route('update.password')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Name</label>                     
-                            <input class="form-control" value="{{Auth::user()->name}}" type="text" name="name">
-                        </div> 
-                        <div class="form-group">
-                            <label for="name">email</label>                     
-                            <input class="form-control" value="{{Auth::user()->email}}" type="text" name="email">
+                            <label for="name">Old Password</label>                     
+                            <input class="form-control" type="password" name="oldpwd">
                         </div>
-                        @if(Auth::user()->role != 1)
-                            <div class="form-group">
-                                <label for="name">Special login link</label>                     
-                                <input readonly class="form-control" value="{{Auth::user()->link}}" type="text">
-                            </div>
-                        @endif
                         <div class="form-group">
-                            <label for="profile_pic">Change profile picture</label>
-                            <input class="form-control-file" type="file" name="profile_pic" >  
+                            <label for="name">New Password</label>                     
+                            <input class="form-control" type="password" name="newpwd">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Confirm Password</label>                     
+                            <input class="form-control" type="password" name="cpwd">
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary">Save Changes</button>
