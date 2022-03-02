@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
         $codeForm = $getcodeForm[1];
         $code = str_pad($codeForm.$randomStr, 5, '0', STR_PAD_LEFT);
 
-        $link = $request->header('Origin').'/account/'.$username;
+        $link = $request->header('Origin').'/account/access/'.$username;
 
         $user = User::create([
             'name' => $request->name,

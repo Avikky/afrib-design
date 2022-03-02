@@ -17,7 +17,7 @@ use App\Http\Controllers\StoryController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ 
 
 // Route::get('/', function () {
 //     return view('index');
@@ -27,8 +27,9 @@ use App\Http\Controllers\StoryController;
 Route::get('/', [PageController::class, 'index'])->name('home');
 
 
-Route::get('/account/login/{username}', [LoginController::class, 'loginUser'])->name('login.user');
-
+Route::get('/account/access/{username}', [LoginController::class, 'loginUser'])->name('login.user');
+Route::get('/view/{slug}', [PageController::class, 'viewStory'])->name('view.story');
+Route::get('/all-story', [PageController::class, 'allStory'])->name('all.story');
 
 Route::group(['prefix' => 'account', 'middleware' => ['auth', 'isuser']], function()
 {
@@ -61,7 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isadmin']], functio
     Route::post('/reject/{id}', [StoryController::class, 'rejectStory'])->name('reject.story');
 
     Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
-
+ 
     Route::post('/create-category', [AdminController::class, 'createCategory'])->name('create.category');
     Route::delete('/delete-category/{id}', [AdminController::class, 'deleteCategory'])->name('delete.category');
     Route::delete('/delete-location/{id}', [AdminController::class, 'deleteLocation'])->name('delete.location');

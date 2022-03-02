@@ -78,7 +78,7 @@ Header END -->
 Footer START -->
 <footer class="pb-0">
 	<div class="container">
-		<div class="mt-4">©2021 <a href="https://www.webestica.com/" class="text-reset btn-link" target="_blank">Webestica</a>. All rights reserved
+		<div class="mt-4">©2021 Afrib Design. All rights reserved
 		</div>
 	</div>
 </footer>

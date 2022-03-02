@@ -85,7 +85,7 @@ class AdminController extends Controller
         if($checkOldPassword){
             if($request->newpwd === $request->cpwd){
                 $user = Auth::user();
-                $user->password = $request->newpwd;
+                $user->password = Hash::make($request->newpwd);
                 $user->save();
                 return redirect()->back()->with('success', 'Your password has been change successfully!');
             }else{
