@@ -11,7 +11,7 @@
         <div class="p-4 p-sm-5 bg-primary-soft rounded">
 					<h2 class="text-center">Admin Login</h2>
 					<!-- Form START -->
-					<form action="{{ route('login') }}" method="POST" class="mt-4">
+					<form action="{{ route('login.auth') }}" method="POST" class="mt-4">
                         @csrf
 						<!-- Email -->
 						<div class="mb-3">
