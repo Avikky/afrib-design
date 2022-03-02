@@ -87,13 +87,6 @@
 						</a>
 					</li>
 				@else
-				<li class="nav-item">
-					<a href="{{ route('stories') }}" class="nav-link ml-3">
-					  <i class="far fa-circle nav-icon"></i>
-					  <p>New Story</p> 
-					</a>
-				  </li>
-  
 				  <li class="nav-item">
 					<a href="{{ route('stories') }}" class="nav-link ml-3">
 					  <i class="far fa-circle nav-icon"></i>
