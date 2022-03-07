@@ -18,7 +18,8 @@ class CreateStoriesTable extends Migration
             $table->string('title');
             $table->string('category_id')->nullable();
             $table->string('location_id')->nullable();
-            $table->string('story');
+            $table->mediumText('story');
+            $table->integer('user_id');
             $table->integer('status')->default(0);
             $table->string('slug');
             $table->integer('is_draft')->default(0);
