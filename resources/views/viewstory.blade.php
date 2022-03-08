@@ -69,6 +69,8 @@
               <small class="text-muted">See stories about places on twitter</small>
           </div>
           <div class="card-body">
+            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">For the ultimate in luxury on the lakeshore, <a href="https://twitter.com/MakokolaRetreat?ref_src=twsrc%5Etfw">@MakokolaRetreat</a> boasts beautiful views of Lake Malawi 🇲🇼<a href="https://twitter.com/hashtag/discoverafrica?src=hash&amp;ref_src=twsrc%5Etfw">#discoverafrica</a> <a href="https://twitter.com/hashtag/africantravelmarket?src=hash&amp;ref_src=twsrc%5Etfw">#africantravelmarket</a> <a href="https://twitter.com/hashtag/travel?src=hash&amp;ref_src=twsrc%5Etfw">#travel</a><a href="https://twitter.com/hashtag/malawi?src=hash&amp;ref_src=twsrc%5Etfw">#malawi</a><a href="https://twitter.com/hashtag/tourism?src=hash&amp;ref_src=twsrc%5Etfw">#tourism</a><a href="https://twitter.com/hashtag/luxurytravel?src=hash&amp;ref_src=twsrc%5Etfw">#luxurytravel</a> <a href="https://t.co/k06Z9SdWTN">pic.twitter.com/k06Z9SdWTN</a></p>&mdash; #discoverAfrica (@AfricanTravelM) <a href="https://twitter.com/AfricanTravelM/status/1057924926294900736?ref_src=twsrc%5Etfw">November 1, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <br>
             <a href="https://twitter.com/intent/tweet?button_hashtag=places&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #places</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
         </div>
@@ -78,7 +80,15 @@
               <small class="text-muted">Google map will be here</small>
           </div>
           <div class="card-body">
-            
+            <iframe
+              width="600"
+              height="450"
+              style="border:0"
+              loading="lazy"
+              allowfullscreen
+              src="https://www.google.com/maps/embed/v1/place?key=API_KEY
+                &q=Space+Needle,Seattle+WA">
+            </iframe>
           </div>
         </div>
       </div>

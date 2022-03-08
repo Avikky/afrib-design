@@ -165,7 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        WisdomDiala\Cryptocap\Providers\CryptocapServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,7 +228,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Cryptocap' => WisdomDiala\Cryptocap\Facades\Cryptocap::class,
     ],
 
 ];
