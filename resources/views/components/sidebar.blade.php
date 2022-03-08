@@ -97,15 +97,17 @@
 
 			  </ul>
 		  </li>
+		  @if(Auth::user()->role == 0)
+		  
+			<li class="nav-item">
+				<a href="{{ route('profile') }}" class="nav-link">
+				<i class="nav-icon fa fa-product-hunt text-yellow"></i>
+				<p>Profile</p>
+				</a>
+			</li>
+			@else
 
 		  
-		  <li class="nav-item">
-			<a href="{{ route('profile') }}" class="nav-link">
-			  <i class="nav-icon fa fa-product-hunt text-yellow"></i>
-			  <p>Profile</p>
-			</a>
-		  </li>
-		  @if(Auth::user()->role == 1)
 			<li class="nav-item">
 				<a href="{{ route('settings') }}" class="nav-link">
 				<i class="nav-icon fa fa-cogs text-pink"></i>
