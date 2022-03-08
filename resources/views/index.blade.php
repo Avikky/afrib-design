@@ -44,7 +44,7 @@ Search section START -->
 <!-- featured story section START -->
 <section class="container mt-4 mb-4" style="background: #fff; height: 550px;">
 	<div class="row">
-		@if($stories)
+		@if($stories[0] && $stories[2])
 			<div class="col-md-7"> 
 				<div class="card" style="background-image: url('{{'storage/'.$stories[0]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover; height: 457px;">
 					<div class="d-flex justify-content-center align-items-end card-body">
