@@ -69,7 +69,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isadmin']], functio
 
     Route::post('/create-location', [AdminController::class, 'createLocation'])->name('create.location');
 
-    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('admin.profile');
     Route::post('/profile/{id}', [DashboardController::class, 'updateProfile'])->name('update.profile');
     Route::post('/password-change', [AdminController::class, 'changePassword'])->name('update.password'); 
 
