@@ -30,39 +30,57 @@
           </div>
 
           <div class="card-body">
-              <div class="list-group">
-                  <a href="{{route('all.story')}}" class="list-group-item list-group-item-action active">
-                      All Categories
-                  </a>
-                  @foreach ($categories as $category)
-                      <a href="{{route('all.story', ['category'=>$category->id])}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                          {{$category->name}}
-                          <span class="badge badge-primary badge-pill">{{count(\App\Models\Story::where('category_id', $category->id)->get())}}</span>
-                      </a>
-                  @endforeach
-              </div>
+            <div class="list-group">
+                <a href="{{route('all.story')}}" class="list-group-item list-group-item-action active">
+                    All Categories
+                </a>
+                @foreach ($categories as $category)
+                    <a href="{{route('all.story', ['category'=>$category->id])}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        {{$category->name}}
+                        <span class="badge badge-primary badge-pill">{{count(\App\Models\Story::where('category_id', $category->id)->get())}}</span>
+                    </a>
+                @endforeach
+            </div>
           </div>
-      </div>
-      <div class="card mt-3">
-          <div class="card-header">
-              <h5 class="card-title">All Locations</h5>
-              <small class="text-muted">See stories about a location</small>
-          </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="card-title">All Locations</h5>
+                <small class="text-muted">See stories about a location</small>
+            </div>
 
-          <div class="card-body">
-              <div class="list-group">
-                  <a href="{{route('all.story')}}" class="list-group-item list-group-item-action active">
-                      All Locations
-                  </a>
-                  @foreach ($locations as $location)
-                      <a href="{{route('all.story', ['location'=>$location->id])}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                          {{$location->country}}
-                          <span class="badge badge-primary badge-pill">{{count(\App\Models\Story::where('category_id', $location->id)->get())}}</span>
-                      </a>
-                  @endforeach
-              </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <a href="{{route('all.story')}}" class="list-group-item list-group-item-action active">
+                        All Locations
+                    </a>
+                    @foreach ($locations as $location)
+                        <a href="{{route('all.story', ['location'=>$location->id])}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            {{$location->country}}
+                            <span class="badge badge-primary badge-pill">{{count(\App\Models\Story::where('category_id', $location->id)->get())}}</span>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-header">
+              <h5 class="card-title">Twitter space</h5>
+              <small class="text-muted">See stories about places on twitter</small>
           </div>
-      </div>
+          <div class="card-body">
+            <a href="https://twitter.com/intent/tweet?button_hashtag=places&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #places</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-header">
+              <h5 class="card-title">Map Area</h5>
+              <small class="text-muted">Google map will be here</small>
+          </div>
+          <div class="card-body">
+            
+          </div>
+        </div>
       </div>
       <div class="col-md-8">
         <div class="card mt-3">
