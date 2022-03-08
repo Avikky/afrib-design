@@ -44,62 +44,65 @@ Search section START -->
 <!-- featured story section START -->
 <section class="container mt-4 mb-4" style="background: #fff; height: 550px;">
 	<div class="row">
-		<div class="col-md-7"> 
-			<div class="card" style="background-image: url('{{'storage/'.$stories[0]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover; height: 457px;">
-				<div class="d-flex justify-content-center align-items-end card-body">
-					<div class="card-title px-4" style="width: 70%; height: 200px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
-						<h3 class="text-center">{{$stories[0]->title}}</h3>
-						<p> {!!html_entity_decode(substr(strip_tags($stories[0]->story) , 0, 100))!!}</p>
-						<p class="d-flex justify-content-center">
-							<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[0]->slug])}}">Read story</a>
-						</p>
-						<br>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-5">
-			<div class="d-flex flex-column">
-				<div class="card mb-3" style="height: 220px; background-image: url('{{'storage/'.$stories[2]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+		@if($stories)
+			<div class="col-md-7"> 
+				<div class="card" style="background-image: url('{{'storage/'.$stories[0]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover; height: 457px;">
 					<div class="d-flex justify-content-center align-items-end card-body">
-						<div class="card-title px-4" style="width: 70%; height: 180px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
-							<h3 class="text-center">{{$stories[2]->title}}</h3>
-							<p>
-								{!!html_entity_decode(substr(strip_tags($stories[2]->story) , 0, 50))!!}
-							</p>
+						<div class="card-title px-4" style="width: 70%; height: 200px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
+							<h3 class="text-center">{{$stories[0]->title}}</h3>
+							<p> {!!html_entity_decode(substr(strip_tags($stories[0]->story) , 0, 100))!!}</p>
 							<p class="d-flex justify-content-center">
-								<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[2]->slug])}}">Read story</a>
+								<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[0]->slug])}}">Read story</a>
 							</p>
 							<br>
 						</div>
 					</div>
 				</div>
-				<div class="card mb-3" style="height: 220px; background-image: url('{{'storage/'.$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+			</div>
+			<div class="col-md-5">
+				<div class="d-flex flex-column">
+					<div class="card mb-3" style="height: 220px; background-image: url('{{'storage/'.$stories[2]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+						<div class="d-flex justify-content-center align-items-end card-body">
+							<div class="card-title px-4" style="width: 70%; height: 180px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
+								<h3 class="text-center">{{$stories[2]->title}}</h3>
+								<p>
+									{!!html_entity_decode(substr(strip_tags($stories[2]->story) , 0, 50))!!}
+								</p>
+								<p class="d-flex justify-content-center">
+									<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[2]->slug])}}">Read story</a>
+								</p>
+								<br>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-3" style="height: 220px; background-image: url('{{'storage/'.$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
 
-					<div class="d-flex justify-content-center align-items-end card-body">
-						<div class="card-title px-4" style="width: 70%; height: 190px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
-							<h3 class="text-center">{{$stories[1]->title}}</h3>
-							<p>
-								{!!html_entity_decode(substr(strip_tags($stories[1]->story) , 0, 50))!!}
-							</p>
-							<p class="d-flex justify-content-center">
-								<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[1]->slug])}}">Read story</a>
-							</p>
-							<br>
+						<div class="d-flex justify-content-center align-items-end card-body">
+							<div class="card-title px-4" style="width: 70%; height: 190px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
+								<h3 class="text-center">{{$stories[1]->title}}</h3>
+								<p>
+									{!!html_entity_decode(substr(strip_tags($stories[1]->story) , 0, 50))!!}
+								</p>
+								<p class="d-flex justify-content-center">
+									<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[1]->slug])}}">Read story</a>
+								</p>
+								<br>
+							</div>
 						</div>
+		
 					</div>
-	
 				</div>
+				
 			</div>
-			
-		</div>
+		@else
+			<h3 class="text-center"> No stories recorded yet</h3>
+		@endif
 	</div>	
 	<div class="row mt-4">
 		<div class="card mb-3">
 			<div class="row g-0">
-				@foreach ( $stories->slice(0, 4)  as $story )
+				@forelse ( $stories->slice(0, 4)  as $story )
 					<div class="col-md-4">
-						
 						<img src="{{'storage/'.$story->image}}" width="200px" height="120px" alt="story image">
 						</div>
 						<div class="col-md-8">
@@ -120,7 +123,9 @@ Search section START -->
 						</div>
 					</div>
 					<hr>
-				@endforeach
+				@empty
+					<h4 class="text-center">No Stories yet</h4>
+				@endforelse
 			</div>
 			
 		</div>
