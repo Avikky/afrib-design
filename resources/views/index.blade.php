@@ -40,13 +40,12 @@ Search section START -->
 <hr>
 <!-- Search section END -->
 
-
 <!-- featured story section START -->
 <section class="container mt-4 mb-4" style="background: #fff; height: 550px;">
 	<div class="row">
 		@if(count($stories) > 0)
 			<div class="col-md-7"> 
-				<div class="card" style="background-image: url('{{'storage/'.$stories[0]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover; height: 457px;">
+				<div class="card" style="background-image: url('{{$stories[0]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover; height: 457px;">
 					<div class="d-flex justify-content-center align-items-end card-body">
 						<div class="card-title px-4" style="width: 70%; height: 200px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
 							<h3 class="text-center">{{$stories[0]->title}}</h3>
@@ -61,7 +60,7 @@ Search section START -->
 			</div>
 			<div class="col-md-5">
 				<div class="d-flex flex-column">
-					<div class="card mb-3" style="height: 220px; background-image: url('{{'storage/'.$stories[2]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+					<div class="card mb-3" style="height: 220px; background-image: url('{{$stories[2]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
 						<div class="d-flex justify-content-center align-items-end card-body">
 							<div class="card-title px-4" style="width: 70%; height: 180px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
 								<h3 class="text-center">{{$stories[2]->title}}</h3>
@@ -75,7 +74,7 @@ Search section START -->
 							</div>
 						</div>
 					</div>
-					<div class="card mb-3" style="height: 220px; background-image: url('{{'storage/'.$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+					<div class="card mb-3" style="height: 220px; background-image: url('{{$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
 
 						<div class="d-flex justify-content-center align-items-end card-body">
 							<div class="card-title px-4" style="width: 70%; height: 190px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
@@ -103,7 +102,7 @@ Search section START -->
 			<div class="row g-0">
 				@forelse ( $stories->slice(0, 4)  as $story )
 					<div class="col-md-4">
-						<img src="{{'storage/'.$story->image}}" width="200px" height="120px" alt="story image">
+						<img src="{{$story->image}}" width="200px" height="120px" alt="story image">
 						</div>
 						<div class="col-md-8">
 						<div class="card-body">

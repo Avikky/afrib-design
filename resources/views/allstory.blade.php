@@ -67,7 +67,7 @@
         <div class="col-md-9">
             <div class="row">
                 @foreach ($stories as $story)
-                    <div class="col-md-6 card my-3" style="height: 220px; background-image: url('{{'storage/'.$story->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+                    <div class="col-md-6 card my-3" style="height: 220px; background-image: url('{{$story->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
 
                         <div class="d-flex justify-content-center align-items-end card-body">
                             <div class="card-title px-4" style="width: 70%; height: 190px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >

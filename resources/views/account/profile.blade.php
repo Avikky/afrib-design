@@ -29,7 +29,7 @@
             <div class="card">
                 @if(Auth::user()->image != null)
                     <div class="d-flex justify-content-center">
-                        <img width="160px" height="160px" class="img-circle" src="{{'/storage/'.Auth::user()->image}}" alt="Card image cap">
+                        <img width="160px" height="160px" class="img-circle" src="{{asset(Auth::user()->image)}}" alt="Card image cap">
                     </div>
                 @else
                     <div class="d-flex justify-content-center">

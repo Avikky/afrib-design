@@ -45,7 +45,7 @@
         <div class="card mt-3">
           <div class="card-body">
             <div class="card">
-                <img class="card-img-top" src="{{'/storage/'.$story->image}}" alt="Card image cap">
+                <img class="card-img-top" src="{{$story->image}}" alt="Card image cap">
                 <div class="card-body">
                   <h3 class="card-title text-center">{{$story->title}}</h3>
                   <br>

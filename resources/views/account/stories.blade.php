@@ -95,16 +95,16 @@
           <div class="card-body">
             <div class="row">
               @forelse($stories as $story)
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-6 col-xs-12">
                   <div class="card card-widget widget-user shadow-lg">
-                    <div class="widget-user-header text-white" style="background: url('{{'/storage/'.$story->image}}') center center;">
+                    <div class="widget-user-header text-white" style="background: url('{{ asset($story->image)}}') center center;">
                     
                     </div>
                     <div class="widget-user-image">
                       @if (Auth::user()->image == null)
                         <img class="img-circle" src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg" alt="User Avatar">
                       @else
-                        <img class="img-circle" src="{{'/storage/'.Auth::user()->image}}" alt="User Avatar">
+                        <img class="img-circle" src="{{ asset(Auth::user()->image) }}" alt="User Avatar">
                       @endif
                       
                     </div>
@@ -233,7 +233,7 @@
                                 <div class="form-group">
                                   @if($story->image != null)
                                     <label for="image_preview">Image preview</label><br>
-                                    <img style="width:100%; height: 400%;" src="{{'/storage/'.$story->image}}" alt="">
+                                    <img style="width:100%; height: 400%;" src="{{$story->image}}" alt="">
                                   @else
                                     <p>No image available </p>
                                   @endif

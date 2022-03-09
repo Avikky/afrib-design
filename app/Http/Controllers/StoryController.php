@@ -13,6 +13,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use JD\Cloudder\Facades\Cloudder;
 
  
 class StoryController extends Controller
@@ -76,7 +77,20 @@ class StoryController extends Controller
 
         if ($request->file('featured_image')) {
             $file = $request->file('featured_image');
-            $image = Storage::disk('public')->putFile('story_images', $file);
+           
+            if(env('APP_ENV') == 'local'){
+                $storeImg = Storage::disk('public')->putFile('story_images', $file);
+                $image = 'storage/'.$storeImg;
+            }else{
+                $image_name = $file->getRealPath();
+                Cloudder::upload($image_name, null);
+                
+                list($width, $height) = getimagesize($image_name);
+    
+                $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+                
+                $image = $image_url;
+            }
         } 
         else{
             $image = NULL;
@@ -128,11 +142,25 @@ class StoryController extends Controller
 
         if ($request->file('featured_image')) {
             $file = $request->file('featured_image');
-            $image = Storage::disk('public')->putFile('property', $file);
+            if(env('APP_ENV') == 'local'){
+                $storeImg = Storage::disk('public')->putFile('story_images', $file);
+                $image = 'storage/'.$storeImg;
+            }else{
+                $image_name = $file->getRealPath();
+                Cloudder::upload($image_name, null);
+                
+                list($width, $height) = getimagesize($image_name);
+    
+                $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+                
+                $image = $image_url;
+            }
         } 
         else{
-            $image = $story->featured_image;
+            $image = $story->image;
         }
+
+        $story->image = $image;
 
         $story->save();
 
