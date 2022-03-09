@@ -10,7 +10,7 @@
 	</div>
 	<div class="container alert alert-info alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button> 
-        <strong class="text-center">Please ensure to keep your special login url safe, you can see ur special login link in your profile page</strong>
+        <strong class="text-center">Please ensure to keep your special login url safe, you can see your special login link in your profile page</strong>
     </div>
 	<div>
 		<h3 class="text-center">
