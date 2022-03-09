@@ -145,8 +145,30 @@
                         @else
                           <a href="" data-target="#editor{{$story->id}}" data-toggle="modal" class="btn btn-xs btn-default mx-2 px-2">Edit</a>
                         @endif
-                        <a href="" class="btn btn-xs btn-danger mx-2 px-2">Delete</a>
-                      </div>
+
+                        @if (Auth::user()->role == 1)
+                          <a href="{{ route('del.story', ['id' => $story->id]) }}"
+                          onclick="event.preventDefault();
+                          document.getElementById('del-story2$story->id').submit();" class="btn btn-xs btn-danger mx-2 px-2">Delete</a>
+                  
+                          <form id="del-story2$story->id" action="{{ route('del.story', ['id' => $story->id]) }}" method="POST" style="display: none;">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                          </form>
+                        @else
+                          <a href="{{ route('delete.story', ['id' => $story->id]) }}"
+                          onclick="event.preventDefault();
+                          document.getElementById('del-story1$story->id').submit();" class="btn btn-xs btn-danger mx-2 px-2">Delete</a>
+                  
+                          <form id="del-story1$story->id" action="{{ route('delete.story', ['id' => $story->id]) }}" method="POST" style="display: none;">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                          </form>
+                        @endif
+                       
+
+
+                      </div> 
                     </div>
                   </div>
 

@@ -60,15 +60,15 @@ Search section START -->
 			</div>
 			<div class="col-md-5">
 				<div class="d-flex flex-column">
-					<div class="card mb-3" style="height: 220px; background-image: url('{{$stories[2]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+					<div class="card mb-3" style="height: 220px; background-image: url('{{$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
 						<div class="d-flex justify-content-center align-items-end card-body">
 							<div class="card-title px-4" style="width: 70%; height: 180px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
-								<h3 class="text-center">{{$stories[2]->title}}</h3>
+								<h3 class="text-center">{{$stories[1]->title}}</h3>
 								<p>
-									{!!html_entity_decode(substr(strip_tags($stories[2]->story) , 0, 50))!!}
+									{!!html_entity_decode(substr(strip_tags($stories[1]->story) , 0, 50))!!}
 								</p>
 								<p class="d-flex justify-content-center">
-									<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[2]->slug])}}">Read story</a>
+									<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[1]->slug])}}">Read story</a>
 								</p>
 								<br>
 							</div>
@@ -96,7 +96,7 @@ Search section START -->
 		@else
 			<h3 class="text-center"> No stories recorded yet</h3>
 		@endif
-	</div>	
+	</div>
 	<div class="row mt-4">
 		<div class="card mb-3">
 			<div class="row g-0">
