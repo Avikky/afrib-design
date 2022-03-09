@@ -62,15 +62,15 @@ Search section START -->
 				<div class="d-flex flex-column">
 					@foreach ( $stories->slice(0, 2)  as $story )
 						@if($loop->index != 0)
-							<div class="card mb-3" style="height: 250px; background-image: url('{{$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+							<div class="card mb-3" style="height: 250px; background-image: url('{{$story->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
 								<div class="d-flex justify-content-center align-items-center card-body">
 									<div class="card-title px-4" style="width: 70%; height: 70%; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
-										<h3 class="text-center">{{$stories[1]->title}}</h3>
+										<h3 class="text-center">{{$story->title}}</h3>
 										<p>
-											{!!html_entity_decode(substr(strip_tags($stories[1]->story) , 0, 50))!!}
+											{!!html_entity_decode(substr(strip_tags($story->story) , 0, 50))!!}
 										</p>
 										<p class="d-flex justify-content-center">
-											<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[1]->slug])}}">Read story</a>
+											<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $story->slug])}}">Read story</a>
 										</p>
 										<br>
 									</div>
