@@ -61,7 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isadmin']], functio
     Route::post('/approve/{id}', [StoryController::class, 'approveStory'])->name('approve.story');
     Route::post('/reject/{id}', [StoryController::class, 'rejectStory'])->name('reject.story');
 
-    Route::post('/delete/{id}', [StoryController::class, 'destroy'])->name('del.story');
+    Route::delete('/delete/{id}', [StoryController::class, 'destroy'])->name('del.story');
 
 
     Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
