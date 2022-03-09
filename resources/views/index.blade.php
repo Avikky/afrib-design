@@ -7,7 +7,7 @@
 banner section START -->
 <section class="p-0 d-flex justify-content-center align-items-center" style="background-image: url('https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=170667a&w=0&h=tDEC2-p91cZiNU5C19sVhB9L08PmaH5wIijCvRDalCI=');background-position: center;background-repeat: no-repeat; background-size: cover; height: 457px;">
 	<div class="d-flex justify-content-center align-items-center card-body">
-		<div class="card-title px-4" style="width: 50%; height: 200px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
+		<div class="card-title px-4" style="width: 50%; height: 220px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
 			<h3 class="text-center mt-5">Welcome to Afrib Travel Stories</h3>
 			<p class="mt-3 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, tempore.</p>
 			<p class="d-flex justify-content-center">
@@ -44,10 +44,10 @@ Search section START -->
 <section class="container mt-4 mb-4" style="background: #fff; height: 550px;">
 	<div class="row">
 		@if(count($stories) > 0)
-			<div class="col-md-7"> 
-				<div class="card" style="background-image: url('{{$stories[0]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover; height: 457px;">
-					<div class="d-flex justify-content-center align-items-end card-body">
-						<div class="card-title px-4" style="width: 70%; height: 200px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
+			<div class="col-md-7 col-sm-12 col-xs-12"> 
+				<div class="card" style="background-image: url('{{$stories[0]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover; height: 500px;">
+					<div class="d-flex justify-content-center align-items-center card-body">
+						<div class="card-title px-4" style="width: 70%; height: 50%; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
 							<h3 class="text-center">{{$stories[0]->title}}</h3>
 							<p> {!!html_entity_decode(substr(strip_tags($stories[0]->story) , 0, 100))!!}</p>
 							<p class="d-flex justify-content-center">
@@ -58,38 +58,27 @@ Search section START -->
 					</div>
 				</div>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-5 col-sm-12 col-xs-12">
 				<div class="d-flex flex-column">
-					<div class="card mb-3" style="height: 220px; background-image: url('{{$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
-						<div class="d-flex justify-content-center align-items-end card-body">
-							<div class="card-title px-4" style="width: 70%; height: 180px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
-								<h3 class="text-center">{{$stories[1]->title}}</h3>
-								<p>
-									{!!html_entity_decode(substr(strip_tags($stories[1]->story) , 0, 50))!!}
-								</p>
-								<p class="d-flex justify-content-center">
-									<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[1]->slug])}}">Read story</a>
-								</p>
-								<br>
+					@foreach ( $stories->slice(0, 2)  as $story )
+						@if($loop->index != 0)
+							<div class="card mb-3" style="height: 250px; background-image: url('{{$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
+								<div class="d-flex justify-content-center align-items-center card-body">
+									<div class="card-title px-4" style="width: 70%; height: 70%; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
+										<h3 class="text-center">{{$stories[1]->title}}</h3>
+										<p>
+											{!!html_entity_decode(substr(strip_tags($stories[1]->story) , 0, 50))!!}
+										</p>
+										<p class="d-flex justify-content-center">
+											<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[1]->slug])}}">Read story</a>
+										</p>
+										<br>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="card mb-3" style="height: 220px; background-image: url('{{$stories[1]->image}}');background-position: center;background-repeat: no-repeat; background-size: cover;">
-
-						<div class="d-flex justify-content-center align-items-end card-body">
-							<div class="card-title px-4" style="width: 70%; height: 190px; background-color: rgb(0,0,0, 0.5); color: #fff; border-radius: 10px;" >
-								<h3 class="text-center">{{$stories[1]->title}}</h3>
-								<p>
-									{!!html_entity_decode(substr(strip_tags($stories[1]->story) , 0, 50))!!}
-								</p>
-								<p class="d-flex justify-content-center">
-									<a class="btn btn-primary btn-sm" href="{{route('view.story', ['slug' => $stories[1]->slug])}}">Read story</a>
-								</p>
-								<br>
-							</div>
-						</div>
-		
-					</div>
+						
+						@endif
+					@endforeach
 				</div>
 				
 			</div>
